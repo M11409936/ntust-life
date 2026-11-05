@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 台科日常
 
-## Getting Started
+台科大學生的校園生活 PWA：今日總覽、課表、交通、校園（學餐、建築代碼）、行事曆與許願池。
 
-First, run the development server:
+## 開發
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # 正式建置
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 結構
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/data/campus.ts`：節次、建築、學餐、行事曆、交通等校園資料。**目前全部是範例資料，上線前要跟學校公告核對。**
+- `src/lib/`：時間計算、本機儲存、課表狀態
+- `src/app/`：五個分頁（`/`、`/timetable`、`/transit`、`/campus`、`/calendar`）
+- `src/app/manifest.ts`、`public/sw.js`：PWA 設定與離線快取
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 之後的規劃
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 交通：接交通部 TDX API 取得公車即時到站、YouBike 車數
+- 課表：匯入台科大課程查詢資料、衝堂檢查、匯出 .ics
+- 許願池與帳號：Supabase

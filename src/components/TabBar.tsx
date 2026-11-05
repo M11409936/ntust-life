@@ -16,7 +16,7 @@ export default function TabBar() {
     <div className="tabs">
       <nav aria-label="主選單">
         {TABS.map((t) => (
-          <Link key={t.href} href={t.href} className="tab" aria-current={path === t.href ? "page" : undefined}>
+          <Link key={t.href} href={t.href} className="tab" aria-current={(path.replace(/\/$/, "") || "/") === t.href ? "page" : undefined}>
             <svg viewBox="0 0 24 24" aria-hidden="true">{t.icon}</svg>
             {t.label}
           </Link>

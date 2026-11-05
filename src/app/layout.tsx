@@ -2,12 +2,14 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import TabBar from "@/components/TabBar";
 import RegisterSW from "@/components/RegisterSW";
+import { BASE } from "@/lib/base";
 
 export const metadata: Metadata = {
   title: "台科日常",
   description: "台科大學生的校園生活小幫手：課表、交通、學餐、建築與行事曆。",
   appleWebApp: { capable: true, title: "台科日常", statusBarStyle: "default" },
-  icons: { icon: "/icon.svg", apple: "/icon-192.png" },
+  icons: { icon: `${BASE}/icon.svg`, apple: `${BASE}/icon-192.png` },
+  manifest: `${BASE}/manifest.webmanifest`,
 };
 
 export const viewport: Viewport = {

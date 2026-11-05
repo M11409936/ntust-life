@@ -67,7 +67,7 @@ export const ROUTES = [
   { to: "捷運台電大樓站", via: "綠線・經汀州路", mins: 18 },
 ];
 
-export type Course = { name: string; room: string };
+export type Course = { name: string; room: string; no?: string };
 export const SAMPLE_COURSES: Record<string, Course> = {
   "0-2": { name: "微積分(一)", room: "T4-301" },
   "0-3": { name: "微積分(一)", room: "T4-301" },

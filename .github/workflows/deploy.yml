@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # 每天台灣時間凌晨 4 點更新課程資料
+    - cron: "0 20 * * *"
 
 permissions:
   contents: read
@@ -24,6 +27,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: 抓取課程資料
+        run: node scripts/fetch-courses.mjs
       - run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}

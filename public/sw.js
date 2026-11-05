@@ -1,8 +1,8 @@
 // 簡易離線快取：頁面採 network-first，靜態檔案採 cache-first
-const CACHE = "ntustlife-v1";
+const CACHE = "ntustlife-v3";
 // 以 service worker 所在位置推算子路徑，本機與 GitHub Pages 都適用
 const BASE = new URL("./", self.location).pathname;
-const PAGES = ["", "timetable/", "transit/", "campus/", "calendar/"].map((p) => BASE + p);
+const PAGES = ["", "timetable/", "transit/", "campus/", "calendar/", "services/", "courses/"].map((p) => BASE + p);
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PAGES)).then(() => self.skipWaiting()));

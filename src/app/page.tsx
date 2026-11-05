@@ -2,13 +2,15 @@
 import Link from "next/link";
 import { EVENTS, ROUTES } from "@/data/campus";
 import { useCourses } from "@/lib/courses";
-import { useNow } from "@/lib/hooks";
 import { dayBlocks, minutesOf, nextBusIn, openEateries, toMin, weekdayIndex } from "@/lib/time";
 import { Sample } from "@/components/ui";
+import { ALL_SERVICES, DEFAULT_FAVORITES } from "@/data/services";
+import { useNow, useStored } from "@/lib/hooks";
 
 export default function Today() {
   const now = useNow();
   const { courses, isSample } = useCourses();
+  const [favs] = useStored<string[]>("favServices", DEFAULT_FAVORITES);
   if (!now) return <section className="view" aria-busy="true" />;
 
   const h = now.getHours();
@@ -99,6 +101,22 @@ export default function Today() {
           </div>
         ) : (
           <p className="muted">目前校內餐廳都休息了。</p>
+        )}
+      </div>
+
+      <div className="card">
+        <div className="row between">
+          <h3>常用服務</h3>
+          <Link className="btn small" href="/services">全部服務</Link>
+        </div>
+        {favs.length ? (
+          <div className="shortcuts">
+            {ALL_SERVICES.filter((s) => favs.includes(s.id)).map((s) => (
+              <a key={s.id} href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>
+            ))}
+          </div>
+        ) : (
+          <p className="muted">到「服務」分頁按星號，就能把常用系統放在這裡。</p>
         )}
       </div>
 

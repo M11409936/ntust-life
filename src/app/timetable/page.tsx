@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { DAY_PERIODS, PERIODS, SEMESTER_LABEL, WEEKDAYS, type Course } from "@/data/campus";
 import { useCourses } from "@/lib/courses";
@@ -41,12 +42,9 @@ export default function Timetable() {
         </div>
       </div>
 
-      <div className="card">
-        <h3>接下來會做</h3>
-        <p className="small muted">
-          直接搜尋台科大課程查詢系統的開課資料加入課表、檢查衝堂、匯出 .ics 到 Google／Apple 日曆，並支援臺灣大學系統跨校選課。
-        </p>
-      </div>
+      <Link className="btn primary" href="/courses" style={{ textAlign: "center", textDecoration: "none" }}>
+        搜尋台科大開課資料，加入課表
+      </Link>
 
       {editing && (
         <Editor

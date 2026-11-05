@@ -4,6 +4,7 @@ import { EVENTS, ROUTES } from "@/data/campus";
 import { useCourses } from "@/lib/courses";
 import { dayBlocks, minutesOf, nextBusIn, openEateries, toMin, weekdayIndex } from "@/lib/time";
 import { Sample } from "@/components/ui";
+import ThemeToggle from "@/components/ThemeToggle";
 import { ALL_SERVICES, DEFAULT_FAVORITES } from "@/data/services";
 import { useNow, useStored } from "@/lib/hooks";
 
@@ -34,6 +35,7 @@ export default function Today() {
           </p>
           <h1>{hi}，台科人</h1>
         </div>
+        <ThemeToggle />
       </div>
 
       <div className="card hero">

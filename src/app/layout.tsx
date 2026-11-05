@@ -3,6 +3,7 @@ import "./globals.css";
 import TabBar from "@/components/TabBar";
 import RegisterSW from "@/components/RegisterSW";
 import { BASE } from "@/lib/base";
+import { themeInitScript } from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: "台科日常",
@@ -24,8 +25,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-Hant-TW">
+    <html lang="zh-Hant-TW" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="stylesheet"
